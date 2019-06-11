@@ -19,7 +19,6 @@
     "request": "~2.88.0",
     "request-promise": "~4.2.1",
     "timestring": "~3.2.0",
-    "tke-logger": "git+https://github.com/TkeITMobility/tke-cloud-logger.git#v0.5.0",
     "verror": "~1.6.1"
   },
   "devDependencies": {
@@ -41,7 +40,6 @@
     "analysis": "plato -d analysis $(find ./lib -name \"*.js\" -not -name \"*.test.js\")",
     "test": "npm run-script eslint && npm run-script coverage | bunyan",
     "coverage": "env TKE_LOG_SILENT=true NODE_PATH=. NODE_ENV=test istanbul cover -x *.test.js _mocha $(find ./lib -name \"*.test.js\")",
-    "unit": "env TKE_LOG_SILENT=true NODE_PATH=. NODE_ENV=test _mocha $(find ./lib -name \"*.test.js\") | bunyan",
-    "debug": "env NODE_PATH=. FH_MILLICORE='tke.us.feedhenry.com' FH_ENV=tke-dev  FH_SERVICE_MAP='{\"vc2eth4jhnbbpzci374dxfx4\":\"https://tke-vc2eth4jhnbbpzci374dxfx4-tke-dev.mbaas1.tke.feedhenry.com\"}' FH_USE_LOCAL_DB=true node-debug application.js | bunyan"
+    "unit": "env TKE_LOG_SILENT=true NODE_PATH=. NODE_ENV=test _mocha $(find ./lib -name \"*.test.js\") | bunyan"
   }
 }
