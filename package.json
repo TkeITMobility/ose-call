@@ -1,0 +1,50 @@
+{
+  "name": "ose-call",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "~3.4.6",
+    "body-parser": "~1.15.0",
+    "cors": "~2.2.0",
+    "env-var": "~2.0.0",
+    "express": "~4.14.0",
+    "express-joi-validation": "~0.1.0",
+    "joi": "~9.0.4",
+    "lodash": "~4.13.1",
+    "moment": "~2.17.1",
+    "request": "~2.88.0",
+    "request-promise": "~4.2.1",
+    "timestring": "~3.2.0",
+    "tke-logger": "git+https://github.com/TkeITMobility/tke-cloud-logger.git#v0.5.0",
+    "verror": "~1.6.1"
+  },
+  "devDependencies": {
+    "bunyan": "~1.8.1",
+    "chai": "~3.5.0",
+    "eslint": "~2.11.1",
+    "istanbul": "0.4.4",
+    "mocha": "~2.1.0",
+    "node-inspector": "~0.12.8",
+    "nodemon": "~1.11.0",
+    "proxyquire": "0.5.3",
+    "sinon": "~1.17.2",
+    "sinon-as-promised": "~4.0.2",
+    "supertest": "0.8.2"
+  },
+  "scripts": {
+    "start": "env NODE_PATH=. node application.js",
+    "eslint": "eslint lib/**/*.js lib/*.js",
+    "analysis": "plato -d analysis $(find ./lib -name \"*.js\" -not -name \"*.test.js\")",
+    "test": "npm run-script eslint && npm run-script coverage | bunyan",
+    "coverage": "env TKE_LOG_SILENT=true NODE_PATH=. NODE_ENV=test istanbul cover -x *.test.js _mocha $(find ./lib -name \"*.test.js\")",
+    "unit": "env TKE_LOG_SILENT=true NODE_PATH=. NODE_ENV=test _mocha $(find ./lib -name \"*.test.js\") | bunyan",
+    "debug": "env NODE_PATH=. FH_MILLICORE='tke.us.feedhenry.com' FH_ENV=tke-dev  FH_SERVICE_MAP='{\"vc2eth4jhnbbpzci374dxfx4\":\"https://tke-vc2eth4jhnbbpzci374dxfx4-tke-dev.mbaas1.tke.feedhenry.com\"}' FH_USE_LOCAL_DB=true node-debug application.js | bunyan"
+  }
+}
